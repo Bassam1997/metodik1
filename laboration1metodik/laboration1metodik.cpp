@@ -5,15 +5,111 @@
 #include "int_sorted.h"
 #include "int_buffer.h"
 #include <utility> 
+#include <chrono>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 void f(int_buffer buf);
-int_sorted sort(const int* begin, const int* end);
+int_sorted sortis(const int* begin, const int* end);
+void selectionSort(int* begin, int* end);
+
+
+
+/* Function to print an array */
+/*void printArray(int_sorted a)
+{
+    for (const int* j = a.begin(); j < a.end(); j++)
+        cout << *j << " ";
+    cout << endl;
+}*/
+
 
 
 int main(int argc, const char* argv[])
 {
+   
+    /*auto start = chrono::steady_clock::now();
+    auto end = chrono::steady_clock::now();
+    auto diff = end - start;
+    cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+    //  Insert the code that will be timed
+    */
+
+    std::cout << "Choose sortingalgorithm:" << std::endl;
+    std::cout << "1. SelectionSort" << std::endl;
+    std::cout << "2. Sortis" << std::endl;
+    std::cout << "3. Sort" << std::endl;
+    
+    int val;
+    std::cin >> val;
+    const int husow = 400000;
+    int_buffer buf(husow);
+    for (int indek = 0; indek < husow; indek++) {
+        buf [indek] = (rand() % 20) + 1;
+       //cout << buf[indek] << endl;
+       
+    }
+    
+    
+    
+    if (val == 1) {
+        auto start = chrono::steady_clock::now();
+        selectionSort(buf.begin(), buf.end());
+      // test 1 selec sort: 137918 ms
+      //test 2 selec sort: 137939 ms
+       //test 3 selec sort: 137912 ms
+        auto end = chrono::steady_clock::now();
+
+        // Store the time difference between start and end
+        auto diff = end - start;
+        cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+    }
+    if (val == 2) {
+        auto start = chrono::steady_clock::now();
+        sortis(buf.begin(), buf.end());
+        // test 1 sortis: 1041.56 ms
+        //test 2 sortis: 1033.91 ms
+        //test 3 sortis: 1032.96 ms
+        auto end = chrono::steady_clock::now();
+
+        // Store the time difference between start and end
+        auto diff = end - start;
+        cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+    }
+    if (val == 3) {
+        auto start = chrono::steady_clock::now();
+    sort(buf.begin(), buf.end()); //sort är en sorteringsalgorithm som finns i algortihm biblioteket
+        // test 1 sort: 136.618 ms
+        //test 2 sort: 136.604 ms
+        //test 3 sort: 136.587 ms
+    auto end = chrono::steady_clock::now();
+
+    // Store the time difference between start and end
+    auto diff = end - start;
+    cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+    }
+
+    //auto end = chrono::steady_clock::now();
+
+    // Store the time difference between start and end
+    //auto diff = end - start;
+    //cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+
+        
+
+    /*std::cin >> val;
+    if (val == 1) {
+       /
+    
+    /*}
+    if (val == 2) {
+        
+   // }
+    
+    
+    
     //f(int_buffer (10));
    
    /* int_buffer a(3);
@@ -31,39 +127,17 @@ int main(int argc, const char* argv[])
         cout << i << endl;
         }
    */
-    int array[]{ 30, 50, 20, 10, 40 };
-    constexpr int length{ static_cast<int>(std::size(array)) };
+    
+   // auto end = chrono::steady_clock::now();
 
-    // Step through each element of the array
-    // (except the last one, which will already be sorted by the time we get there)
-    for (int startIndex{ 0 }; startIndex < length - 1; ++startIndex)
-    {
-        // smallestIndex is the index of the smallest element we’ve encountered this iteration
-        // Start by assuming the smallest element is the first element of this iteration
-        int smallestIndex{ startIndex };
-
-        // Then look for a smaller element in the rest of the array
-        for (int currentIndex{ startIndex + 1 }; currentIndex < length; ++currentIndex)
-        {
-            // If we've found an element that is smaller than our previously found smallest
-            if (array[currentIndex] < array[smallestIndex])
-                // then keep track of it
-                smallestIndex = currentIndex;
-        }
-
-        // smallestIndex is now the smallest element in the remaining array
-                // swap our start element with our smallest element (this sorts it into the correct place)
-        std::swap(array[startIndex], array[smallestIndex]);
-    }
-
-    // Now that the whole array is sorted, print our sorted array as proof it works
-    for (int index{ 0 }; index < length; ++index)
-        std::cout << array[index] << ' ';
-
-    std::cout << '\n';
+    // Store the time difference between start and end
+    //auto diff = end - start;
+    //cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
 
     return 0; 
 }
+
+
 
 void f(int_buffer buf)
 {
@@ -86,12 +160,33 @@ void f(int_buffer buf)
     */
 }
 
-int_sorted sort(const int* begin, const int* end) {
+int_sorted sortis(const int* begin, const int* end) {
     if (begin == end) return
         int_sorted(nullptr, 0);
     if (begin == end - 1) return
         int_sorted(begin, 1);
     ptrdiff_t half = (end - begin) / 2; //pointer diff type
     const int* mid = begin + half;
-    return sort(begin, mid).merge(sort(mid, end));
+    return sortis(begin, mid).merge(sortis(mid, end));
 }
+
+void selectionSort(int* begin, int* end)
+{
+    
+    // One by one move boundary of unsorted subarray  
+    for (int* i = begin; i != end; i++)
+    {
+        // Find the minimum element in unsorted array  
+        int* min_idx = i;
+        for (int* j = i + 1; j != end; j++) {
+            if (*j < *min_idx) {
+                min_idx = j;
+            }
+        }
+        if (min_idx != i) {
+            // Swap the found minimum element with the first element  
+            swap(*min_idx, *i);
+        }
+    }
+}
+
