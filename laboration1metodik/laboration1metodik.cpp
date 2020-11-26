@@ -11,9 +11,9 @@
 
 using namespace std;
 
-void f(int_buffer buf);
-int_sorted sortis(const int* begin, const int* end);
-void selectionSort(int* begin, int* end);
+//void f(int_buffer buf);
+//int_sorted sortis(const int* begin, const int* end);
+//void selectionSort(int* begin, int* end);
 
 
 
@@ -23,7 +23,7 @@ void selectionSort(int* begin, int* end);
     for (const int* j = a.begin(); j < a.end(); j++)
         cout << *j << " ";
     cout << endl;
-}*/
+} */
 
 
 
@@ -36,7 +36,8 @@ int main(int argc, const char* argv[])
     cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
     //  Insert the code that will be timed
     */
-
+    
+    /*
     std::cout << "Choose sortingalgorithm:" << std::endl;
     std::cout << "1. SelectionSort" << std::endl;
     std::cout << "2. Sortis" << std::endl;
@@ -46,7 +47,7 @@ int main(int argc, const char* argv[])
     std::cin >> val;
     const int husow = 400000;
     int_buffer buf(husow);
-    for (int indek = 0; indek < husow; indek++) {
+    for (int indek = 0; indek < husow; indek++) { //buffer med alla randomtal
         buf [indek] = (rand() % 20) + 1;
        //cout << buf[indek] << endl;
        
@@ -71,11 +72,14 @@ int main(int argc, const char* argv[])
         sortis(buf.begin(), buf.end());
         // test 1 sortis: 1041.56 ms
         //test 2 sortis: 1033.91 ms
-        //test 3 sortis: 1032.96 ms
+        //test 3 sortis: 1032.96 ms   
         auto end = chrono::steady_clock::now();
-
+        /*for (auto a : sortis(buf.begin(), buf.end()))
+        {
+            cout << a << endl;
+        }*/
         // Store the time difference between start and end
-        auto diff = end - start;
+        /*auto diff = end - start;
         cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
     }
     if (val == 3) {
@@ -84,41 +88,31 @@ int main(int argc, const char* argv[])
         // test 1 sort: 136.618 ms
         //test 2 sort: 136.604 ms
         //test 3 sort: 136.587 ms
+    
     auto end = chrono::steady_clock::now();
 
-    // Store the time difference between start and end
+    // Sparar tidsskillnaden mellan start och slut 
     auto diff = end - start;
     cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
     }
 
-    //auto end = chrono::steady_clock::now();
-
-    // Store the time difference between start and end
-    //auto diff = end - start;
-    //cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
-
-        
-
-    /*std::cin >> val;
-    if (val == 1) {
-       /
-    
-    /*}
-    if (val == 2) {
-        
-   // }
-    
-    
-    
-    //f(int_buffer (10));
    
-   /* int_buffer a(3);
+   
+        */
+
+   
+    
+    
+   //f(int_buffer (10));
+   
+    int_buffer a(3);
     int_buffer b(2);
     a[0] = 1;
     a[1] = 2;
     a[2] = 5;
     b[0] = 3;
     b[1] = 4;
+
     int_sorted a_sorted(a.begin(), a.size());
     int_sorted b_sorted(b.begin(), b.size());
     int_sorted c = a_sorted.merge(b_sorted);
@@ -126,19 +120,13 @@ int main(int argc, const char* argv[])
     for (auto i : c) {
         cout << i << endl;
         }
-   */
     
-   // auto end = chrono::steady_clock::now();
-
-    // Store the time difference between start and end
-    //auto diff = end - start;
-    //cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
 
     return 0; 
 }
 
 
-
+/*
 void f(int_buffer buf)
 {
     int r = 1;
@@ -157,9 +145,11 @@ void f(int_buffer buf)
         e = r;
         cout << e << endl;
         r++;
-    */
-}
+    
+} 
+*/
 
+/*
 int_sorted sortis(const int* begin, const int* end) {
     if (begin == end) return
         int_sorted(nullptr, 0);
@@ -189,4 +179,4 @@ void selectionSort(int* begin, int* end)
         }
     }
 }
-
+*/

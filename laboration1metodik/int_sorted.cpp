@@ -5,6 +5,11 @@
 
 using namespace std;
 
+
+int_sorted::int_sorted():buf(MIN_CAPACITY), size(0) {
+
+}
+
 int_sorted::int_sorted(const int* source, size_t size) : buf(source, size)
 {
 }
@@ -15,11 +20,26 @@ size_t int_sorted::size() const
 	return buf.size();
 }
 
-int* int_sorted::insert(int value)
+size_t int_sorted::capacity() const
 {
-	return nullptr;
+	return buf.size();
 }
 
+/*
+int* int_sorted::insert(int value)
+{
+	if (st == capacity()) {
+		int new_size = st * 2;
+		int_buffer buff(new_size);
+		copy(buf.begin(), buf.end(), buf.begin());
+		buf = buff;
+	}
+	buf[st++] = value;
+
+	return nullptr;
+	
+}
+*/
 const int* int_sorted::begin() const
 {
 	return buf.begin();
