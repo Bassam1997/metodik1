@@ -18,5 +18,5 @@ public:
 
 private:
 	int_buffer buf;
-	//size_t st;
+	size_t st;
 };

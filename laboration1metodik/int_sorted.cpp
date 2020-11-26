@@ -6,7 +6,7 @@
 using namespace std;
 
 
-int_sorted::int_sorted():buf(MIN_CAPACITY), size(0) {
+int_sorted::int_sorted():buf(MIN_CAPACITY), st(0) {
 
 }
 

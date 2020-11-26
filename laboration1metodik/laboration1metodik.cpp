@@ -12,8 +12,8 @@
 using namespace std;
 
 //void f(int_buffer buf);
-//int_sorted sortis(const int* begin, const int* end);
-//void selectionSort(int* begin, int* end);
+int_sorted sortis(const int* begin, const int* end);
+void selectionSort(int* begin, int* end);
 
 
 
@@ -36,8 +36,8 @@ int main(int argc, const char* argv[])
     cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
     //  Insert the code that will be timed
     */
+  
     
-    /*
     std::cout << "Choose sortingalgorithm:" << std::endl;
     std::cout << "1. SelectionSort" << std::endl;
     std::cout << "2. Sortis" << std::endl;
@@ -61,7 +61,17 @@ int main(int argc, const char* argv[])
       // test 1 selec sort: 137918 ms
       //test 2 selec sort: 137939 ms
        //test 3 selec sort: 137912 ms
+        /*for (auto c : selectionSort(buf.begin(), buf.end()))
+        {
+            cout << c << endl;
+        }*/
+        
         auto end = chrono::steady_clock::now();
+
+        for (const int* it = buf.begin(); it != buf.end(); it++) {
+            std::cout << *it << '\n';
+        }
+
 
         // Store the time difference between start and end
         auto diff = end - start;
@@ -74,37 +84,40 @@ int main(int argc, const char* argv[])
         //test 2 sortis: 1033.91 ms
         //test 3 sortis: 1032.96 ms   
         auto end = chrono::steady_clock::now();
-        /*for (auto a : sortis(buf.begin(), buf.end()))
+        for (auto a : sortis(buf.begin(), buf.end()))
         {
             cout << a << endl;
-        }*/
+        }
         // Store the time difference between start and end
-        /*auto diff = end - start;
+        auto diff = end - start;
         cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
     }
     if (val == 3) {
         auto start = chrono::steady_clock::now();
-    sort(buf.begin(), buf.end()); //sort är en sorteringsalgorithm som finns i algortihm biblioteket
+        sort(buf.begin(), buf.end()); //sort är en sorteringsalgorithm som finns i algortihm biblioteket
         // test 1 sort: 136.618 ms
         //test 2 sort: 136.604 ms
         //test 3 sort: 136.587 ms
-    
-    auto end = chrono::steady_clock::now();
-
-    // Sparar tidsskillnaden mellan start och slut 
-    auto diff = end - start;
-    cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
-    }
 
    
-   
-        */
+        auto end = chrono::steady_clock::now();
+        for (const int* its = buf.begin(); its != buf.end(); its++) {
+            std::cout << *its << '\n';
+        }
+        // Sparar tidsskillnaden mellan start och slut
+        auto diff = end - start;
+        cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+        }
 
-   
-    
-    
+    // HABIBI TEMMEN AMOT ALEK
+
+
+
+
+
+
    //f(int_buffer (10));
-   
+    /*
     int_buffer a(3);
     int_buffer b(2);
     a[0] = 1;
@@ -120,6 +133,7 @@ int main(int argc, const char* argv[])
     for (auto i : c) {
         cout << i << endl;
         }
+    */
     
 
     return 0; 
@@ -149,7 +163,7 @@ void f(int_buffer buf)
 } 
 */
 
-/*
+
 int_sorted sortis(const int* begin, const int* end) {
     if (begin == end) return
         int_sorted(nullptr, 0);
@@ -179,4 +193,4 @@ void selectionSort(int* begin, int* end)
         }
     }
 }
-*/
+
