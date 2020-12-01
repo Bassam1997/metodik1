@@ -30,13 +30,6 @@ void selectionSort(int* begin, int* end);
 int main(int argc, const char* argv[])
 {
    
-    /*auto start = chrono::steady_clock::now();
-    auto end = chrono::steady_clock::now();
-    auto diff = end - start;
-    cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
-    //  Insert the code that will be timed
-    */
-  
     
     std::cout << "Choose sortingalgorithm:" << std::endl;
     std::cout << "1. SelectionSort" << std::endl;
@@ -54,19 +47,18 @@ int main(int argc, const char* argv[])
     }
     
     
-    
     if (val == 1) {
         auto start = chrono::steady_clock::now();
         selectionSort(buf.begin(), buf.end());
       // test 1 selec sort: 137918 ms
       //test 2 selec sort: 137939 ms
        //test 3 selec sort: 137912 ms
-        /*for (auto c : selectionSort(buf.begin(), buf.end()))
+      /* for (auto c : selectionSort(buf.begin(), buf.end()))
         {
             cout << c << endl;
-        }*/
-        
-        auto end = chrono::steady_clock::now();
+        }
+        */
+       auto end = chrono::steady_clock::now();
 
         for (const int* it = buf.begin(); it != buf.end(); it++) {
             std::cout << *it << '\n';
@@ -109,22 +101,23 @@ int main(int argc, const char* argv[])
         cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
         }
 
-    // HABIBI TEMMEN AMOT ALEK
+    // HABIBI TEMMEN AMOT ALEK   
 
 
-
+    
 
 
 
    //f(int_buffer (10));
     /*
     int_buffer a(3);
-    int_buffer b(2);
-    a[0] = 1;
-    a[1] = 2;
-    a[2] = 5;
-    b[0] = 3;
-    b[1] = 4;
+    int_buffer b(3);
+    a[0] = 152;
+    a[1] = 212;
+    a[2] = 431;
+    b[0] = 100;
+    b[1] = 400;
+    b[2] = 403;
 
     int_sorted a_sorted(a.begin(), a.size());
     int_sorted b_sorted(b.begin(), b.size());
@@ -132,9 +125,9 @@ int main(int argc, const char* argv[])
 
     for (auto i : c) {
         cout << i << endl;
-        }
-    */
+    }
     
+    */
 
     return 0; 
 }
