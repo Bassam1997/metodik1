@@ -11,7 +11,7 @@
 
 using namespace std;
 
-//void f(int_buffer buf);
+void f(int_buffer buf);
 int_sorted sortis(const int* begin, const int* end);
 void selectionSort(int* begin, int* end);
 
@@ -20,7 +20,7 @@ void selectionSort(int* begin, int* end);
 /* Function to print an array */
 /*void printArray(int_sorted a)
 {
-    for (const int* j = a.begin(); j < a.end(); j++)
+    for (const int* j = a.begin(); j < a.end(); j++)  // TEST !!! 
         cout << *j << " ";
     cout << endl;
 } */
@@ -31,7 +31,7 @@ int main(int argc, const char* argv[])
 {
    
     
-    std::cout << "Choose sortingalgorithm:" << std::endl;
+    /*std::cout << "Choose sortingalgorithm:" << std::endl;
     std::cout << "1. SelectionSort" << std::endl;
     std::cout << "2. Sortis" << std::endl;
     std::cout << "3. Sort" << std::endl;
@@ -58,8 +58,8 @@ int main(int argc, const char* argv[])
             cout << c << endl;
         }
         */
-       auto end = chrono::steady_clock::now();
-
+       /*auto end = chrono::steady_clock::now();
+       
         for (const int* it = buf.begin(); it != buf.end(); it++) {
             std::cout << *it << '\n';
         }
@@ -67,7 +67,7 @@ int main(int argc, const char* argv[])
 
         // Store the time difference between start and end
         auto diff = end - start;
-        cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
+        cout << chrono::duration <double, milli>(diff).count() << " ms" << endl; 
     }
     if (val == 2) {
         auto start = chrono::steady_clock::now();
@@ -100,7 +100,8 @@ int main(int argc, const char* argv[])
         auto diff = end - start;
         cout << chrono::duration <double, milli>(diff).count() << " ms" << endl;
         }
-
+    
+    */
     // HABIBI TEMMEN AMOT ALEK   
 
 
@@ -108,7 +109,7 @@ int main(int argc, const char* argv[])
 
 
 
-   //f(int_buffer (10));
+   f(int_buffer (10));
     /*
     int_buffer a(3);
     int_buffer b(3);
@@ -133,7 +134,7 @@ int main(int argc, const char* argv[])
 }
 
 
-/*
+
 void f(int_buffer buf)
 {
     int r = 1;
@@ -144,10 +145,11 @@ void f(int_buffer buf)
     }
     const int_buffer& buf1 = buf;
     for (const int* i = buf1.begin(); i != buf1.end(); i++)
-        {
-            cout << *i << endl;
-        }
-    /*
+    {
+        cout << *i << endl;
+    }
+   
+/*
     for(auto& e : buf) {
         e = r;
         cout << e << endl;
@@ -155,7 +157,7 @@ void f(int_buffer buf)
     
 } 
 */
-
+}
 
 int_sorted sortis(const int* begin, const int* end) {
     if (begin == end) return

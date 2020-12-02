@@ -12,7 +12,7 @@ int_buffer::int_buffer(const int* source, size_t size) : buffer_beg(new int[size
     std::copy(source, source + size, begin());
 }
 
-int_buffer::int_buffer(const int_buffer& rhs) : buffer_beg(new int[rhs.size()]), buffer_end(buffer_beg + rhs.size())
+int_buffer::int_buffer(const int_buffer& rhs) : buffer_beg(new int[rhs.size()]), buffer_end(buffer_beg + rhs.size()) // vår copy konstrukt
 {
     std::copy(rhs.begin(), rhs.end(), begin());
 }
